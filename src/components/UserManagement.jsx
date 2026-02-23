@@ -21,7 +21,7 @@ export default function UserManagement() {
     setLoading(true);
     setError("");
     try {
-      const res = await fetch("http://localhost:3000/api/user");
+      const res = await fetch("/api/user");
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "Failed to load users");
       setUsers(data);
@@ -66,7 +66,7 @@ export default function UserManagement() {
     setError("");
 
     try {
-      const res = await fetch(`http://localhost:3000/api/user/${editingId}`, {
+      const res = await fetch(`/api/user/${editingId}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
@@ -90,7 +90,7 @@ export default function UserManagement() {
 
     setError("");
     try {
-      const res = await fetch(`http://localhost:3000/api/user/${id}`, { method: "DELETE" });
+      const res = await fetch(`/api/user/${id}`, { method: "DELETE" });
       const data = await res.json();
       if (!res.ok) throw new Error(data.message || "Delete failed");
 
